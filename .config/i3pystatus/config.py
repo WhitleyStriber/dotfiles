@@ -24,8 +24,8 @@ status.register("battery",
     alert=True,
     alert_percentage=15,
     status={
-        "CHR": "",
-        "DIS": "",
+        "DIS": "",
+        "CHR": "",
         "FULL": "",
     },)
 
