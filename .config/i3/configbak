@@ -1,0 +1,192 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+# Lock screen
+bindsym $mod+shift+x exec i3lock
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Deja Vu Sans 36px
+
+#Background
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/cybergirl.jpg
+
+#Media Keys
+bindsym XF86AudioPlay exec --no-startup-id playerctl play "amixer set Master playback 1-"
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+#bindsym XF86AudioNext execy "amizer set Master playback 1-"
+#Volume
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master 5%+ unmute; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master 5%- unmute; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioMute exec --no-startup-id "amixer -q set Master toggle; pkill -RTMIN+10 i3blocks"
+
+bindsym XF86MonBrightnessUp exec --no-startup-id "sudo /usr/local/bin/scripts/bright_up.sh"
+bindsym XF86MonBrightnessDown exec --no-startup-id "sudo /usr/local/bin/scripts/bright_down.sh"
+
+gaps inner 2
+gaps outer 2
+
+#Screenshot
+bindsym Print exec --no-startup-id scrot -q 100 /home/drew/Pictures/screenshot.jpg
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+#Starta urxvt-unicode terminal
+bindsym $mod+Return exec --no-startup-id urxvt
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# shortcut for chrome
+bindsym $mod+C exec --no-startup-id chromium 
+
+bindsym $mod+p exec --no-startup-id sleep 1 && xset dpms force off
+
+#Fullscreen parameters #TODO FIX
+popup_during_fullscreen smart
+
+#bind pcmanfm
+bindsym $mod+x exec --no-startup-id pcmanfm
+
+#ROFI
+bindsym $mod+d exec --no-startup-id rofi -show run -w 100 -l 3 -f terminus
+ 
+#border
+bindsym $mod+t border normal 3
+# use no window title and a thick border
+# use neither window title nor border
+bindsym $mod+u border none
+
+#Border width
+new_window pixel 3 
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+m layout stacking 
+bindsym $mod+n layout tabbed
+bindsym $mod+s layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+#Application workspace block
+
+# Workspace config
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'Exit ' -b 'Disengage' 'i3-msg exit'"
+
+#Colors of windows
+client.focused			#2effab #2effab #2effaa #2effaa
+client.unfocused		#9197ae #9197ae3 #9197ae3	
+client.focused_inactive		#9197ae #9197ae #9197ae
+client.urgent			#da2525 #da2525 #ffffff	
+client.background		#757575
+
+# resize window (you can also use the mouse for that)
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Compton - transparency program
+#exec_always compton
+#
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command    python ~/.config/i3pystatus/config.py
+    position    bottom
+    font pango: Anonymice Powerline 12
+
+colors {
+    background #4a46459
+    statusline #fefefe
+    separator #8ba19e
+   }
+ }
