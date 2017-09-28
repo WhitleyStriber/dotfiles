@@ -155,7 +155,7 @@ bar {
         status_command  python ~/.config/i3pystatus/config.py
 
 colors {
-	background	#4A464F
+	background	#494544
 	statusline	#FEFEFE
 	separator	#8BA19E
 	}
