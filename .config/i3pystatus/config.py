@@ -20,7 +20,7 @@ status.register("temp",
     format="{temp:.0f}°C",)
 
 status.register("battery",
-    format="{status} {bar}{remaining:%E%hh:%Mm}",
+    format="{status} {bar} {remaining:%E%hh:%Mm}",
     alert=True,
     alert_percentage=15,
     status={
