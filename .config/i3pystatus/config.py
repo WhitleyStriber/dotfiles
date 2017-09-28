@@ -70,4 +70,6 @@ status.register("mail",
             format=" {unread}",
             on_leftclick="chromium 'https://inbox.google.com/'",)
 
+status.register("bitcoin",
+        )
 status.run()
