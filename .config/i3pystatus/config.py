@@ -39,7 +39,7 @@ status.register("network",
 status.register("disk",
     path="/",
     format=" {avail} GB",
-    on_leftclick="pcmanfm")
+    on_leftclick="exec pcmanfm")
 
 # Shows pulseaudio default sink volume
 # Note: requires libpulseaudio from PyPI
