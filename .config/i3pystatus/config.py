@@ -1,19 +1,22 @@
 from i3pystatus import Status
 from i3pystatus.weather import weathercom
 from i3pystatus.mail import imap
+from i3pystatus import Status
+from i3pystatus.updates import pacman, cower
+
 
 status = Status()
 
 # Calendar
 status.register("clock",
-        format=" %a,%-D  %X",
+        format=" %A %-D  %X",
         on_leftclick="urxvt -hold -e cal -3")
 
 # Shows the average load of the last minute and the last 5 minutes
 # (the default value for format is used)
 status.register("load",
-        format="{avg1}",
-        on_leftclick="urxvt -e htop")
+        format=" {avg1}",
+        on_leftclick="urxvt -e htop",)
 
 # Shows your CPU temperature, if you have a Intel CPU
 status.register("temp",
@@ -67,10 +70,20 @@ status.register("mail",
              username="andrewtramutolo@gmail.com",
              password="qrlipzyuswtuegtu"
             )],
-            format=" {unread}",
-            format_plural=" {unread}",
-            on_leftclick="chromium 'https://inbox.google.com/'",)
+            format = " {unread}",
+            format_plural = " {unread}",
+            on_leftclick = "chromium 'https://inbox.google.com/'",)
 
 status.register("bitcoin",
         )
+
+status.register("updates",
+                format=" {count}",
+                format_no_updates="",
+                interval=300,
+                on_leftclick="urxvt -hold -e sudo pacman -Syu --noconfirm",
+                backends=[pacman.Pacman()])
+
+
+
 status.run()
