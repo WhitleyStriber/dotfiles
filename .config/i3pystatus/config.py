@@ -68,6 +68,7 @@ status.register("mail",
              password="qrlipzyuswtuegtu"
             )],
             format=" {unread}",
+            format_plural=" {unread}",
             on_leftclick="chromium 'https://inbox.google.com/'",)
 
 status.register("bitcoin",
