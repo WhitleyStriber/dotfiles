@@ -71,7 +71,6 @@ SAVEHIST=2000
 # Key Bindings for XPS 9550
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
-bindkey '^E' end-of-line
 bindkey '^R' history-incremental-pattern-search-backward
 
 # Zplug Bindings
